@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "174923962983",
+    "project_id": "and103-md18303-3dedb",
+    "storage_bucket": "and103-md18303-3dedb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174923962983:android:0db07c8ca10060ffb492c2",
+        "android_client_info": {
+          "package_name": "com.pma101.lapmarket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5k4N2f_C9TxLdYwIMMpEn7N9okTb4pZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174923962983:android:0b84f8b3aada1845b492c2",
+        "android_client_info": {
+          "package_name": "nghiadtph40607.fpoly.asm1_and103"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5k4N2f_C9TxLdYwIMMpEn7N9okTb4pZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
