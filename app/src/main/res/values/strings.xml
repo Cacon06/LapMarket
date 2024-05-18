@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">LapMarket</string>
-    <string name="sign_up">Don\'t have an account? <b>Sign up</b></string>
-    <string name="quenmk"><u>forgot password?</u></string>
+    <string name="sign_up">Bạn chưa có tài khoản? <b>Đăng ký</b></string>
+    <string name="quenmk"><b>Quên mật khẩu?</b></string>
     <string name="xemthem"><b>Xem Thêm</b></string>
-    <string name="back">Do you already have an account? <b>Sign in</b></string>
+    <string name="back">Bạn đã có tài khoản? <b>Đăng nhập</b></string>
     <string name="open">Open nav</string>
     <string name="close">Close nav</string>
 
