@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -56,6 +57,13 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
         Glide.with(context).load(laptop.getHinhanh()).into(holder.imgAnh);
         httpRequest = new HttpRequest();
 
+        holder.btn_xemthem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showdialogXemThem(list.get(holder.getAdapterPosition()));
+            }
+        });
+
         holder.btnDelete.setOnClickListener(view -> {
             new AlertDialog.Builder(context)
                     .setMessage("Bạn có muốn xoá không?")
@@ -96,6 +104,8 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
         TextView txtTen, txtGia, txtThuongHieu, txtXuatXu;
         ImageView imgAnh, btnDelete, btnUpdate;
 
+        Button btn_xemthem;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTen = itemView.findViewById(R.id.txt_Ten);
@@ -105,7 +115,38 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
             imgAnh = itemView.findViewById(R.id.imgAnh);
             btnDelete = itemView.findViewById(R.id.btnDelete);
             btnUpdate = itemView.findViewById(R.id.btnUpdate);
+            btn_xemthem = itemView.findViewById(R.id.btn_xemthem);
         }
+    }
+
+    private void showdialogXemThem(Laptop lapTop){
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
+        LayoutInflater layoutInflater = ((Activity)context).getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.item_chitiet_sanpham, null);
+        builder.setView(view);
+
+        TextView txt_tensp_chitiet = view.findViewById(R.id.txt_tensp_chitiet);
+        TextView txt_giasp_chitiet = view.findViewById(R.id.txt_giasp_chitiet);
+        TextView txt_thuonghieu_chtiet = view.findViewById(R.id.txt_thuonghieu_chtiet);
+        TextView txt_xuatxu_chtiet = view.findViewById(R.id.txt_xuatxu_chtiet);
+
+
+
+        txt_tensp_chitiet.setText("Tên: " + lapTop.getTen());
+        txt_giasp_chitiet.setText("Giá: " + lapTop.getGia()
+        );
+        txt_thuonghieu_chtiet.setText("Thương hiệu: " + lapTop.getThuonghieu());
+        txt_xuatxu_chtiet.setText("Xuất xứ: " + lapTop.getXuatxu());
+
+
+        builder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        androidx.appcompat.app.AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 }

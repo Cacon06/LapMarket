@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="10dp">
+        android:gravity="center">
         <ImageView
             android:id="@+id/imgAnh"
             android:layout_width="100dp"
@@ -56,6 +55,16 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+            <Button
+                android:id="@+id/btn_xemthem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#9E1919"
+                android:text="Xem thêm"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
 
 
         </LinearLayout>

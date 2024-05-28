@@ -1,0 +1,139 @@
+[{
+  "_id": {
+    "$oid": "65f50ebb3eb73f624e47c85e"
+  },
+  "name": "Táo",
+  "quantity": 4,
+  "price": 3000,
+  "status": 1,
+  "image": [
+    "kkkkkk"
+  ],
+  "description": "klkl",
+  "id_distributor": {
+    "$oid": "65f50cda8c63c35b830cf4e3"
+  },
+  "createdAt": {
+    "$date": "2024-03-16T03:15:07.621Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T03:15:07.621Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f516403eb73f624e47c86e"
+  },
+  "name": "Nho",
+  "quantity": 4,
+  "price": 4000,
+  "status": 1,
+  "image": [
+    "kkkkkk"
+  ],
+  "description": "klkl",
+  "id_distributor": {
+    "$oid": "65f50cda8c63c35b830cf4e3"
+  },
+  "createdAt": {
+    "$date": "2024-03-16T03:47:12.399Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T03:47:12.399Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f5175c3eb73f624e47c872"
+  },
+  "name": "Xoài",
+  "quantity": 5,
+  "price": 4000,
+  "status": 1,
+  "image": [
+    "kkkkkk"
+  ],
+  "description": "klkl",
+  "id_distributor": {
+    "$oid": "65f50cda8c63c35b830cf4e3"
+  },
+  "createdAt": {
+    "$date": "2024-03-16T03:51:56.690Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T03:51:56.690Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f5738628e768a3f8b926f4"
+  },
+  "name": "Quýt",
+  "quantity": 4,
+  "price": 4000,
+  "status": 1,
+  "image": [
+    "kkkkkk"
+  ],
+  "description": "klkl",
+  "id_distributor": {
+    "$oid": "65f50cda8c63c35b830cf4e3"
+  },
+  "createdAt": {
+    "$date": "2024-03-16T10:25:10.635Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T10:25:10.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f5754b5272b58bb55d4bfb"
+  },
+  "name": "Dưa hấu",
+  "quantity": 200,
+  "price": 8000,
+  "status": 1,
+  "image": [
+    "http://localhost:3000/uploads/image-1710585163353Dua-hau-khong-hat-qua-2.5-5kg.png",
+    "http://localhost:3000/uploads/image-1710585163360watermelon.jpg"
+  ],
+  "description": "ngon",
+  "id_distributor": {
+    "$oid": "65f50cda8c63c35b830cf4e3"
+  },
+  "createdAt": {
+    "$date": "2024-03-16T10:32:43.368Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T10:32:43.368Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f5919f8d7840386753c85f"
+  },
+  "name": "Vải",
+  "quantity": 4,
+  "price": 4000,
+  "status": 1,
+  "image": [
+    "kkkkkk"
+  ],
+  "description": "llll",
+  "id_distributor": {
+    "$oid": "65f50cda8c63c35b830cf4e3"
+  },
+  "createdAt": {
+    "$date": "2024-03-16T12:33:35.788Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T12:33:35.788Z"
+  },
+  "__v": 0
+}]

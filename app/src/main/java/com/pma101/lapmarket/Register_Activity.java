@@ -49,7 +49,7 @@ public class Register_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(getApplicationContext(), "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Register_Activity.this, MainActivity.class);
+                            Intent intent = new Intent(Register_Activity.this, MenuActivity.class);
                             startActivity(intent);
                             finish();
                         }else {

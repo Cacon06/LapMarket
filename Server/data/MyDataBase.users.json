@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "65f5797146423e328f0b7b9c"
+  },
+  "username": "tuanquynh",
+  "password": "123456",
+  "email": "tuanquynh030804@gmail.com",
+  "name": "Quỳnh",
+  "avatar": "http://localhost:3000/uploads/avatar-1710586225134z4364505124801_5fdb709d195ea5cd74837a4bfe0b7ac2.jpg",
+  "available": false,
+  "createdAt": {
+    "$date": "2024-03-16T10:50:25.142Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T10:50:25.142Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65f58d3776d1d49af8194b94"
+  },
+  "username": "tuanquynh2",
+  "password": "1234567",
+  "email": "luuq26716@gmail.com",
+  "name": "Quỳnh2",
+  "avatar": "http://localhost:3000/uploads/avatar-1710591287647z4364505124801_5fdb709d195ea5cd74837a4bfe0b7ac2.jpg",
+  "available": false,
+  "createdAt": {
+    "$date": "2024-03-16T12:14:47.656Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-16T12:14:47.656Z"
+  },
+  "__v": 0
+}]
