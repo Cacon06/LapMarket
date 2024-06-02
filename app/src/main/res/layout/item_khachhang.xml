@@ -24,81 +24,61 @@
             android:orientation="vertical"
             android:layout_marginLeft="10dp">
             <TextView
-                android:id="@+id/txt_Ten"
+                android:id="@+id/txt_TenKH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tên: "
+                android:text="Tên Khách Hàng: "
                 android:textColor="#F88E4B"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp" />
             <TextView
-                android:id="@+id/txtGia"
+                android:id="@+id/txt_tuoi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Giá: "
+                android:text="Tuổi: "
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp" />
             <TextView
-                android:id="@+id/txtThuongHieu"
+                android:id="@+id/txt_diachi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thương hiệu: "
+                android:text="Địa chỉ: "
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp" />
             <TextView
-                android:id="@+id/txtXuatXu"
+                android:id="@+id/txt_gioitinh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Xuất xứ: "
+                android:text="Giới tính: "
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
-            <Button
-                android:id="@+id/btn_xemthem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#9E1919"
-                android:text="Xem thêm"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                />
-            <Button
-                android:id="@+id/btn_mua"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#4D9C8C"
-                android:text="Add cart"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                />
 
 
         </LinearLayout>
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="vertical"
-         android:gravity="center"
-         android:padding="5dp"
-         >
-         <ImageView
-             android:id="@+id/btnUpdate"
-             android:layout_width="wrap_content"
-             android:layout_height="30sp"
-             android:src="@drawable/update" />
-         <ImageView
-             android:id="@+id/btnDelete"
-             android:layout_width="wrap_content"
-             android:layout_height="30sp"
-             android:src="@drawable/delete" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:id="@+id/btnUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="30sp"
+                android:src="@drawable/update" />
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="30sp"
+                android:src="@drawable/delete" />
 
 
 
-     </LinearLayout>
+        </LinearLayout>
 
 
 

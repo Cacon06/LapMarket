@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".KhachHangActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -28,10 +31,10 @@
             android:name=".Register_Activity"
             android:exported="false" />
         <activity
-            android:name=".ManHinhChao_Activity"
+            android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".ManHinhChao_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

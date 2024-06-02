@@ -39,6 +39,10 @@ public class MenuActivity extends AppCompatActivity {
                     Intent intent = new Intent(MenuActivity.this, MainActivity.class);
                     startActivity(intent);
                     return true;
+                }else if (item.getItemId()==R.id.khachhang){
+                    Intent intent = new Intent(MenuActivity.this, KhachHangActivity.class);
+                    startActivity(intent);
+                    return true;
                 }
                 return false;
             }
