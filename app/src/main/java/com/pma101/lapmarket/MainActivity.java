@@ -1,239 +1,134 @@
 package com.pma101.lapmarket;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.pma101.lapmarket.Handel.Item_Handle;
-import com.pma101.lapmarket.adapter.LaptopAdapter;
-import com.pma101.lapmarket.models.Laptop;
-import com.pma101.lapmarket.services.HttpRequest;
+import com.google.android.material.navigation.NavigationView;
+import com.pma101.lapmarket.frag.Fragment_QL_KhachHang;
+import com.pma101.lapmarket.frag.GioHangFragment;
+import com.pma101.lapmarket.frag.QLLaptopFragmen;
+import com.pma101.lapmarket.frag.QLLaptopFragmen;
+import com.pma101.lapmarket.frag.frg_cskh;
 
-import java.util.ArrayList;
+public class MainActivity extends AppCompatActivity {
 
-import retrofit2.Call;
-import retrofit2.Callback;
-
-public class MainActivity extends AppCompatActivity implements Item_Handle {
-
-    private HttpRequest httpRequest;
-    private RecyclerView recycle_laptop;
-    private LaptopAdapter adapter;
-    FloatingActionButton fltAdd;
-    private ArrayList<Laptop> list;
-
+    DrawerLayout drawerLayout;
+    NavigationView nav;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        recycle_laptop = findViewById(R.id.recycle_laptop);
-        fltAdd = findViewById(R.id.fltadd);
-        httpRequest = new HttpRequest();
 
-        httpRequest.callAPI()
-                .getListLaptop()
-                .enqueue(getStudentAPI);
-        fltAdd.setOnClickListener(new View.OnClickListener() {
+        drawerLayout = findViewById(R.id.drawerlayout);
+        toolbar = findViewById(R.id.toolbar);
+        nav = findViewById(R.id.nav);
+        View headerLayout = nav.getHeaderView(0);
+        TextView txt_ten = headerLayout.findViewById(R.id.txt_ten);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Trang Chủ");
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.frmNav, new QLLaptopFragmen()).commit();
+
+        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                opendialogthem();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.thoat) {
+                    showDialogDangXuat();
+                } else if (item.getItemId() == R.id.trangchu) {
+                    QLLaptopFragmen frgTrangchu = new QLLaptopFragmen();
+                    replaceFragment(frgTrangchu);
+                }else if (item.getItemId() == R.id.cskh) {
+                    frg_cskh frg_cskh = new frg_cskh();
+                    replaceFragment(frg_cskh);
+                }else if (item.getItemId() == R.id.lapVanPhong_macbook) {
+                    LaptopGamingFragment frg_laptopgaming = new LaptopGamingFragment();
+                    replaceFragment(frg_laptopgaming);
+                }else if (item.getItemId() == R.id.khachhang) {
+                    Fragment_QL_KhachHang frg_khachhang = new Fragment_QL_KhachHang();
+                    replaceFragment(frg_khachhang);
+                }else if (item.getItemId() == R.id.giohang) {
+                    GioHangFragment frg_giohang = new GioHangFragment();
+                    replaceFragment(frg_giohang);
+                }else if (item.getItemId() == R.id.lichsu) {
+                    HoaDonFragment frg_hoadon = new HoaDonFragment();
+                    replaceFragment(frg_hoadon);
+                }
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+                getSupportActionBar().setTitle(item.getTitle());
+                return true;
             }
         });
 
+        // Đọc loại tài khoản từ SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("THONGTIN", MODE_PRIVATE);
+        String loaitk = sharedPreferences.getString("loaitaikhoan", "");
 
+        Menu menu = nav.getMenu();
+        if (!loaitk.equals("admin")) {
+            menu.findItem(R.id.quanli_sp_home).setVisible(false);
+            menu.findItem(R.id.quanli_sp_gaming).setVisible(false);
+            menu.findItem(R.id.quanli_sp_vanphong).setVisible(false);
+            menu.findItem(R.id.thongKe_dt).setVisible(false);
+        } else {
+            menu.findItem(R.id.cskh).setVisible(false);
+            menu.findItem(R.id.giohang).setVisible(false);
+            menu.findItem(R.id.lichsu).setVisible(false);
+            menu.findItem(R.id.lapVanPhong_macbook).setVisible(false);
+            menu.findItem(R.id.trangchu).setVisible(false);
+        }
+
+        // Hiển thị tên người dùng
+        String hoten = sharedPreferences.getString("hoten", "");
+        txt_ten.setText(hoten);
     }
 
-    private void opendialogthem() {
+    public void replaceFragment(Fragment frg) {
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.frmNav, frg).commit();
+    }
+
+    private void showDialogDangXuat() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_add, null);
-        builder.setView(view);
-        Dialog dialog = builder.create();
-        dialog.show();
+        builder.setIcon(R.drawable.canhbao);
+        builder.setMessage("Bạn chắc chắn muốn thoát");
 
-        EditText edtAnh_ad = view.findViewById(R.id.edtAnh_ad);
-        EditText edtTen_ad = view.findViewById(R.id.edtTen_ad);
-        EditText edtGia_ad = view.findViewById(R.id.edtGia_ad);
-        EditText edtthuonghieu_ad = view.findViewById(R.id.edtThuongHieu_ad);
-        EditText edtxuatXu_ad = view.findViewById(R.id.edtXuatXu_ad);
-        Button btnadd = view.findViewById(R.id.btnThem);
-        btnadd.setOnClickListener(new View.OnClickListener() {
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String Anh = edtAnh_ad.getText().toString();
-                String Ten = edtTen_ad.getText().toString();
-                String Gia = edtGia_ad.getText().toString();
-                String ThuongHieu = edtthuonghieu_ad.getText().toString();
-                String XuatXu = edtxuatXu_ad.getText().toString();
-                Laptop laptops = new Laptop();
-
-                if (Ten.isEmpty() || Gia.isEmpty() || ThuongHieu.isEmpty()|| XuatXu.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                try {
-
-
-                    laptops.setHinhanh(Anh);
-                    laptops.setTen(Ten);
-                    laptops.setGia(Gia);
-                    laptops.setThuonghieu(ThuongHieu);
-                    laptops.setXuatxu(XuatXu);
-                    httpRequest.callAPI().addLaptop(laptops).enqueue(responseDistributorAPI);
-                    Toast.makeText(MainActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                } catch (NumberFormatException e) {
-                    Toast.makeText(MainActivity.this, "Trạng thái phải là một số nguyên", Toast.LENGTH_SHORT).show();
-                }
-
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                Toast.makeText(MainActivity.this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-    }
-
-    ;
-
-    private void getData(ArrayList<Laptop> list) {
-        adapter = new LaptopAdapter(this, list, this);
-        recycle_laptop.setLayoutManager(new LinearLayoutManager(this));
-        recycle_laptop.setAdapter(adapter);
-    }
-
-    Callback<Response<ArrayList<Laptop>>> getListStudentAPI =new Callback<Response<ArrayList<Laptop>>>() {
-        @Override
-        public void onResponse(Call<Response<ArrayList<Laptop>>> call, retrofit2.Response<Response<ArrayList<Laptop>>> response) {
-            //khi call thành công
-            if (response.isSuccessful()){
-                if (response.body().getStatus() == 200){ //check status code
-                    list= response.body().getData();// gán dữ liệu trả về từ phản hồi vào biến ds
-                    getData(list);
-                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-        @Override
-        public void onFailure(Call<Response<ArrayList<Laptop>>> call, Throwable t) {
-            Log.d(">>>> Student", "onFailure: " + t.getMessage());
-        }
-    };
-
-    Callback<Response<ArrayList<Laptop>>> getStudentAPI = new Callback<Response<ArrayList<Laptop>>>() {
-        @Override
-        public void onResponse(Call<Response<ArrayList<Laptop>>> call, retrofit2.Response<Response<ArrayList<Laptop>>> response) {
-            if (response.isSuccessful()) {
-                if (response.body().getStatus() == 200) {
-                    ArrayList<Laptop> list = response.body().getData();
-                    getData(list);
-                    Toast.makeText(MainActivity.this, response.body().getMessenger(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-        @Override
-        public void onFailure(Call<Response<ArrayList<Laptop>>> call, Throwable t) {
-            Log.d(">>>GetListDistributor", "onFailure: " + t.getMessage());
-        }
-    };
-    Callback<Response<Laptop>> responseDistributorAPI = new Callback<Response<Laptop>>() {
-        @Override
-        public void onResponse(Call<Response<Laptop>> call, retrofit2.Response<Response<Laptop>> response) {
-            if (response.isSuccessful()) {
-                //check status code
-                if (response.body().getStatus() == 200) {
-                    //Call lại API danh sách
-                    httpRequest.callAPI()
-                            .getListLaptop() //Phương thức API cần thực thi
-                            .enqueue(getStudentAPI);
-                    //Toast ra thông tin từ Messenger
-                    Toast.makeText(MainActivity.this, response.body().getMessenger(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-
-        @Override
-        public void onFailure(Call<Response<Laptop>> call, Throwable t) {
-            Log.d(">>> GetListDistributor", "onFailure: " + t.getMessage());
-        }
-    };
-
-
-    @Override
-    public void Delete(String id) {
-        httpRequest.callAPI().deleteLaptopById(id).enqueue(responseDistributorAPI);
-    }
-
-    @Override
-    public void Update(String id, Laptop laptops) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_update, null);
-        builder.setView(view);
-        Dialog dialog = builder.create();
-        dialog.show();
-
-        EditText edtAnh_up = view.findViewById(R.id.edtAnh_up);
-        EditText edtTen_up = view.findViewById(R.id.edtTen_up);
-        EditText edtGia_up = view.findViewById(R.id.edtGia_up);
-        EditText edtthuonghieu_up = view.findViewById(R.id.edtThuongHieu_up);
-        EditText edtxuatXu_up = view.findViewById(R.id.edtXuatXu_up);
-        Button btnUpdate = view.findViewById(R.id.btnUpdate);
-
-        edtAnh_up.setText(laptops.getHinhanh());
-        edtTen_up.setText(laptops.getTen());
-        edtGia_up.setText(laptops.getGia());
-        edtthuonghieu_up.setText(laptops.getThuonghieu());
-        edtxuatXu_up.setText(laptops.getXuatxu());
-
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String Anh = edtAnh_up.getText().toString();
-                String Ten = edtTen_up.getText().toString();
-                String Gia = edtGia_up.getText().toString();
-                String ThuongHieu = edtthuonghieu_up.getText().toString();
-                String XuatXu = edtxuatXu_up.getText().toString();
-                String id = laptops.get_id();
-
-                if (Ten.isEmpty() || Gia.isEmpty() || ThuongHieu.isEmpty() || XuatXu.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                try {
-
-
-                    Laptop laptops1 = new Laptop();
-                    laptops1.setHinhanh(Anh);
-                    laptops1.setTen(Ten);
-                    laptops1.setGia(Gia);
-                    laptops1.setThuonghieu(ThuongHieu);
-                    laptops1.setXuatxu(XuatXu);
-                    httpRequest.callAPI().updateLaptopById(id, laptops1).enqueue(responseDistributorAPI);
-                    dialog.dismiss();
-                    Toast.makeText(MainActivity.this, "Chỉnh sửa thành công", Toast.LENGTH_SHORT).show();
-                } catch (NumberFormatException e) {
-                    Toast.makeText(MainActivity.this, "Trạng thái phải là một số nguyên", Toast.LENGTH_SHORT).show();
-                }
-
-
+            public void onClick(DialogInterface dialog, int which) {
             }
         });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

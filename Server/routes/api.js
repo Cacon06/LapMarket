@@ -49,6 +49,18 @@ router.post('/add-kh', async (req, res) => {
   try {
     const data = req.body;
 
+    // Kiểm tra rằng tất cả các trường bắt buộc có mặt
+    const requiredFields = ['AnhDaiDien', 'TenKH', 'TuoiKH', 'DiaChi', 'GioiTinh'];
+    for (let field of requiredFields) {
+      if (!data[field]) {
+        return res.status(400).json({
+          status: 400,
+          messenger: `Lỗi, trường '${field}' là bắt buộc`,
+          data: []
+        });
+      }
+    }
+
     const newKH = new KhachHang({
       AnhDaiDien: data.AnhDaiDien,
       TenKH: data.TenKH,
@@ -61,21 +73,27 @@ router.post('/add-kh', async (req, res) => {
 
     if (result) {
       res.json({
-        "status": 200,
-        "messenger": "Thêm thành công",
-        "data": result
+        status: 200,
+        messenger: "Thêm thành công",
+        data: result
       });
     } else {
       res.json({
-        "status": 400,
-        "messenger": "Lỗi, thêm không thành công",
-        "data": []
+        status: 400,
+        messenger: "Lỗi, thêm không thành công",
+        data: []
       });
     }
   } catch (error) {
     console.log(error);
+    res.status(500).json({
+      status: 500,
+      messenger: "Lỗi máy chủ",
+      data: []
+    });
   }
 });
+
 
 
 

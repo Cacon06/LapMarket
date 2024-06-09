@@ -10,21 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/khung"
+        android:alpha="0.4"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
-
         <ImageView
             android:id="@+id/imgAnh"
             android:layout_width="100dp"
             android:layout_height="158dp"/>
-
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="245dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="10dp">
-
             <TextView
                 android:id="@+id/txt_Ten"
                 android:layout_width="match_parent"
@@ -32,8 +32,7 @@
                 android:text="Tên: "
                 android:textColor="#F88E4B"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"/>
-
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/txtGia"
                 android:layout_width="match_parent"
@@ -41,8 +40,7 @@
                 android:text="Giá: "
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:textSize="18sp"/>
-
+                android:textSize="18sp" />
             <TextView
                 android:id="@+id/txtThuongHieu"
                 android:layout_width="match_parent"
@@ -50,8 +48,7 @@
                 android:text="Thương hiệu: "
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:textSize="18sp"/>
-
+                android:textSize="18sp" />
             <TextView
                 android:id="@+id/txtXuatXu"
                 android:layout_width="match_parent"
@@ -59,37 +56,19 @@
                 android:text="Xuất xứ: "
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
-
+                android:textSize="18sp" />
             <Button
-                android:id="@+id/btn_xemthem"
+                android:id="@+id/btnAddToCart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#9E1919"
-                android:text="Xem thêm"
+                android:backgroundTint="#4D9C8C"
+                android:text="Add cart"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/white"
-                android:textSize="18sp"/>
-        </LinearLayout>
+                android:textSize="18sp"
+                />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
-
-            <ImageView
-                android:id="@+id/btnUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="30sp"
-                android:src="@drawable/update"/>
-
-            <ImageView
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="30sp"
-                android:src="@drawable/delete"/>
         </LinearLayout>
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

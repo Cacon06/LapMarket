@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 
 
 public interface ApiServices {
-    public static String BASE_URL = "http://192.168.1.11:3000/api/";
+    public static String BASE_URL = "http://192.168.1.16:3000/api/";
 
     @GET("get-list-laptop")
     Call<Response<ArrayList<Laptop>>> getListLaptop();
