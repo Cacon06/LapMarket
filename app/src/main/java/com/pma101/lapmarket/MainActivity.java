@@ -66,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 }else if (item.getItemId() == R.id.lapVanPhong_macbook) {
                     LaptopGamingFragment frg_laptopgaming = new LaptopGamingFragment();
                     replaceFragment(frg_laptopgaming);
-                }else if (item.getItemId() == R.id.khachhang) {
-                    Fragment_QL_KhachHang frg_khachhang = new Fragment_QL_KhachHang();
-                    replaceFragment(frg_khachhang);
                 }else if (item.getItemId() == R.id.giohang) {
                     GioHangFragment frg_giohang = new GioHangFragment();
                     replaceFragment(frg_giohang);

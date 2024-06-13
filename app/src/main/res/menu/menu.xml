@@ -10,10 +10,7 @@
     <item
         android:title="Danh Mục Sản Phẩm">
         <menu>
-            <item
-                android:id="@+id/khachhang"
-                android:title="Quản Lý Khách Hàng"
-                android:icon="@drawable/game"/>
+
             <item
                 android:id="@+id/lapVanPhong_macbook"
                 android:title="Laptop Văn phòng, Macbook"
